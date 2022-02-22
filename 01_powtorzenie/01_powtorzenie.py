@@ -97,19 +97,59 @@ petle
     while - powtarzają jakiś kod w zależności od warunku
 
 """
-activity_list = ['Tomek', 'Romek', 'Atomek', 'Paweł']
-# for student in activity_list:
-#     print(f'Czy {student} jest obecny?')
+# activity_list = ['Tomek', 'Romek', 'Atomek', 'Paweł']
+# # for student in activity_list:
+# #     print(f'Czy {student} jest obecny?')
 
-i = 0
-while i < len(activity_list):
-    if activity_list[i][-1] == 'k':
-        print('Imię kończy się na k.')
-    else:
-        print('Imię nie kończy się na k.')
-    i += 1
+# i = 0
+# while i < len(activity_list):
+#     if activity_list[i][-1] == 'k':
+#         print('Imię kończy się na k.')
+#     else:
+#         print('Imię nie kończy się na k.')
+#     i += 1
 
 """
     Utwórz listę uczniów w grupie i przeiteruj między nimi drukując ich imiona.
     Zrób to za pomocą fora.
 """
+
+"""
+Funkcje - fragmenty kodu to używania ponownie, czasami z nowymi argumentami.
+"""
+
+
+# def greeting():
+#     print('Cześć!')
+
+
+# greeting()
+
+
+# def greeting_with_name(name):
+#     print(f'Cześć {name}!')
+
+
+# greeting_with_name('Adam')
+
+def srednia(lista_ocen):
+    # srenia to jest suma ocen / ilość
+    suma = 0
+    for ocena in lista_ocen:
+        suma += ocena  # suma = suma + ocena
+    wynik = suma / len(lista_ocen)
+    return wynik
+
+
+oceny = [5, 4, 4, 2, 4, 3, 6]
+# moja_srednia = srednia(oceny)
+# print(moja_srednia)
+
+# srednia  # NIE WYWOŁUJE FUNKCJI
+
+# dodajemy nawiasy, by wywołać funkcję -> wyrzuca błąd - oczekuje argumentu
+# print(srednia())
+
+# print(srednia(oceny))  # poprawne wywołanie funkcji
+
+print(max(oceny))
