@@ -50,16 +50,18 @@ while game_running:
 
             if event.key == pygame.K_w:
                 waz.zmien_kierunek(Kierunek.GORA)
-            
+
             if event.key == pygame.K_a:
-                game_running = False
+                waz.zmien_kierunek(Kierunek.LEWO)
 
             if event.key == pygame.K_s:
-                game_running = False
+                waz.zmien_kierunek(Kierunek.DOL)
 
             if event.key == pygame.K_d:
-                game_running = False
+                waz.zmien_kierunek(Kierunek.PRAWO)
 
+        elif event.type == PORUSZ_WEZEM:
+            waz.aktualizuj()
         # Naciśnięcie krzyżyka.
         elif event.type == pygame.QUIT:
             game_running = False
