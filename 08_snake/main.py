@@ -2,6 +2,8 @@ import pygame
 import random
 import time
 from Jablko import Jablko
+from Waz import Waz
+from Kierunek import Kierunek
 
 SZEROKOSC_EKRANU = 800
 WYSOKOSC_EKRANU = 608  # !!!
@@ -24,16 +26,41 @@ jablko = Jablko()
 jablka = pygame.sprite.Group()
 jablka.add(jablko)
 
+# Generowanie węża.
+waz = Waz()
+PORUSZ_WEZEM = pygame.USEREVENT + 1
+pygame.time.set_timer(PORUSZ_WEZEM, 200)
+
 # Definicja ekranu i jego wymiarów oraz zegara gry.
 ekran = pygame.display.set_mode([SZEROKOSC_EKRANU, WYSOKOSC_EKRANU])
 zegar = pygame.time.Clock()
 
 game_running = True
 while game_running:
+
+    # Pętla wydarzeń.
     for event in pygame.event.get():
+
+        # Naciśnięcie klawisza na klawiaturze.
         if event.type == pygame.KEYDOWN:
+
+            # Klawisz Escape
             if event.key == pygame.K_ESCAPE:
                 game_running = False
+
+            if event.key == pygame.K_w:
+                waz.zmien_kierunek(Kierunek.GORA)
+            
+            if event.key == pygame.K_a:
+                game_running = False
+
+            if event.key == pygame.K_s:
+                game_running = False
+
+            if event.key == pygame.K_d:
+                game_running = False
+
+        # Naciśnięcie krzyżyka.
         elif event.type == pygame.QUIT:
             game_running = False
 
@@ -41,6 +68,9 @@ while game_running:
 
     # Renderowawnie tła.
     ekran.blit(tlo, (0, 0))
+
+    # Renderowanie węża.
+    ekran.blit(waz.obraz, waz.pozycja)
 
     # Renderowanie jabłek.
     for jablko in jablka:
