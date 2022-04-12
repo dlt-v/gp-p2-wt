@@ -1,6 +1,7 @@
 import pygame
 import random
 import time
+from Jablko import Jablko
 
 SZEROKOSC_EKRANU = 800
 WYSOKOSC_EKRANU = 608  # !!!
@@ -18,6 +19,12 @@ for i in range(25):
 
 pygame.init()
 
+# Generowanie pojedynczego jabłka oraz dodanie go do grupy.
+jablko = Jablko()
+jablka = pygame.sprite.Group()
+jablka.add(jablko)
+
+# Definicja ekranu i jego wymiarów oraz zegara gry.
 ekran = pygame.display.set_mode([SZEROKOSC_EKRANU, WYSOKOSC_EKRANU])
 zegar = pygame.time.Clock()
 
@@ -30,6 +37,17 @@ while game_running:
         elif event.type == pygame.QUIT:
             game_running = False
 
+    # Renderowanie elementów na ekranie.
+
+    # Renderowawnie tła.
     ekran.blit(tlo, (0, 0))
+
+    # Renderowanie jabłek.
+    for jablko in jablka:
+        ekran.blit(jablko.obraz, jablko.pozycja)
+
     pygame.display.flip()
     zegar.tick(30)
+
+time.sleep(3)
+pygame.quit()
