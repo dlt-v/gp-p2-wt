@@ -12,5 +12,3 @@ class Segment(pygame.sprite.Sprite):
     def przesun(self, nowa_pozycja):
         self.ostatnia_pozycja = copy.deepcopy(self.pozycja)
         self.pozycja = copy.deepcopy(nowa_pozycja)
-
-    
