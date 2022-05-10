@@ -67,7 +67,7 @@ while gra_dziala:
         waz.jedz_jablko()
         jablko = Jablko()
         jablka.add(jablko)
-        #SCORE += 1
+        Punkty += 1
 
     # rysowanie tła
     ekran.blit(tlo, (0, 0))
