@@ -42,7 +42,7 @@ while gra_dziala:
     # renderowanie obiektów na ekranie
     ekran.blit(obraz_tla, (0, 0))
     ekran.blit(platforma.surface, platforma.pozycja)
-
+    ekran.blit(kulka.obraz, kulka.pozycja)
     # usuń wszystko co zostało wyrenderowane
     pygame.display.flip()
     zegar.tick(30)
