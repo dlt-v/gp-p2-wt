@@ -1,13 +1,45 @@
 import pygame
 from Platforma import Platforma
 from Kulka import Kulka
+from Klocek import Klocek
 
 SZEROKOSC_EKRANU = 1024
 WYSOKOSC_EKRANU = 800
+Poziom = 0
+Zycia = 3
+
 
 ekran = pygame.display.set_mode([SZEROKOSC_EKRANU, WYSOKOSC_EKRANU])
 zegar = pygame.time.Clock()
 obraz_tla = pygame.image.load("images/background.png")
+# Poziomy gry
+poziom1 = [
+    [0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+]
+poziom2 = [
+    [0, 0, 1, 2, 3, 3, 2, 1, 0, 0],
+    [0, 1, 1, 1, 2, 2, 1, 1, 1, 0],
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
+    [0, 0, 2, 0, 0, 0, 0, 2, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 2, 0, 2, 0, 0, 2, 0, 2, 0]
+]
+poziom3 = [
+    [2, 3, 2, 2, 2, 2, 2, 2, 3, 2],
+    [2, 1, 3, 1, 1, 1, 1, 3, 1, 2],
+    [2, 3, 1, 3, 1, 1, 3, 1, 3, 2],
+    [3, 2, 2, 2, 3, 3, 2, 2, 2, 3],
+    [0, 0, 2, 2, 3, 3, 2, 2, 0, 0],
+    [0, 0, 2, 0, 3, 3, 0, 2, 0, 0],
+    [0, 0, 3, 0, 3, 3, 0, 3, 0, 0]
+]
 
 # Tworzymy zmienną platforma, która przechowuje instancje klasy Platforma.
 platforma = Platforma()
