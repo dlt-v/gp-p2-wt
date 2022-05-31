@@ -46,6 +46,8 @@ platforma = Platforma()
 
 kulka = Kulka()
 
+klocki = pygame.sprite.Group()
+
 gra_dziala = True
 
 while gra_dziala:
