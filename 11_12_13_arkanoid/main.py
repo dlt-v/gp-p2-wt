@@ -48,6 +48,29 @@ kulka = Kulka()
 
 klocki = pygame.sprite.Group()
 
+
+def dodaj_klocki():
+    wczytany_poziom = poziom1
+    if Poziom == 0:
+        wczytany_poziom = poziom1
+    elif Poziom == 1:
+        wczytany_poziom = poziom2
+    elif Poziom == 2:
+        wczytany_poziom = poziom3
+
+    for i in range(10):
+        for j in range(7):
+            if wczytany_poziom[j][i] != 0:
+                klocek = Klocek(
+                    32 + i * 96,
+                    32 + j * 48,
+                    wczytany_poziom[j][i]
+                )
+                klocki.add(klocek)
+
+
+dodaj_klocki()
+
 gra_dziala = True
 
 while gra_dziala:
@@ -69,14 +92,29 @@ while gra_dziala:
     elif keys[pygame.K_d]:
         platforma.ruszaj_platforma(1)
 
+    # sprawdzenie czy pozostały jakieś bloczki na mapie
+    if len(klocki.sprites()) == 0:
+        Poziom += 1
+        if Poziom >= 3:
+            # wyjdź z gry
+            break
+        kulka.zresetuj_pozycje()
+        platforma.zresetuj_pozycje()
+        dodaj_klocki()
+
     # aktualizacja pozycji
-    kulka.aktualizuj(platforma)
+    kulka.aktualizuj(platforma, klocki)
+    klocki.update()
     platforma.aktualizuj()
 
     # renderowanie obiektów na ekranie
     ekran.blit(obraz_tla, (0, 0))
     ekran.blit(platforma.surface, platforma.pozycja)
     ekran.blit(kulka.obraz, kulka.pozycja)
+
+    for cegielka in klocki:
+        ekran.blit(cegielka.obraz, cegielka.pozycja)
+
     # usuń wszystko co zostało wyrenderowane
     pygame.display.flip()
     zegar.tick(30)
